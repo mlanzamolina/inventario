@@ -1,0 +1,219 @@
+void llenar()
+{
+   string a="bimbo";
+   string b="pan";
+   string aa="los andes";
+   string aaa="hawit";
+    arreglo[posicion].setNombre(a);
+    arreglo[posicion].setPrecio(42.24);
+    arreglo[posicion].setTipo(b);
+    arreglo[posicion].setCantidad(5);
+    arreglo[posicion].setVendidos(0);
+    posicion++;
+    arreglo[posicion].setNombre(aa);
+    arreglo[posicion].setPrecio(15);
+    arreglo[posicion].setTipo(b);
+    arreglo[posicion].setCantidad(2);
+    arreglo[posicion].setVendidos(0);
+    posicion++;
+    arreglo[posicion].setNombre(aaa);
+    arreglo[posicion].setPrecio(22);
+    arreglo[posicion].setTipo(b);
+    arreglo[posicion].setCantidad(3);
+    arreglo[posicion].setVendidos(0);
+    posicion++; 
+}
+void verPrecios()
+{
+    cout<<"\n************************************\n";
+    cout<<"\nImprimiendo Precios\n";
+    for (int i = 0; i < posicion; i++)
+    {
+         cout<<"\nNombre: "<<arreglo[i].getNombre()
+         <<"\nPrecio: "<<arreglo[i].getPrecio()
+         <<"\nTipo: "<<arreglo[i].getTipo()<<endl;
+    }
+}
+void verInventario()
+{
+    cout<<"\n************************************\n";
+    cout<<"\nImprimiendo Inventario\n";
+    for (int i = 0; i < posicion; i++)
+    {
+         cout<<"\nNombre: "<<arreglo[i].getNombre()
+         <<"\nPrecio: "<<arreglo[i].getPrecio()
+         <<"\nCantidad: "<<arreglo[i].getCantidad()<<endl;
+    }
+    
+}
+void vender()
+{
+    cout<<"\n************************************\n";
+    cout<<"\nVENDER\n ";
+    int op;
+    bool vTerminada=false;
+    int otro;
+    double total=0;
+    int edad=0;
+    while (!vTerminada)
+    {
+        cout<<"\n1.bimbo\n2.Los andes \n3.hawit";
+        cout<<"\nIngrese producto que desea:\n";
+        cin>>op;
+        
+        
+           if(op==1)
+           {
+               if (arreglo[op-1].getCantidad()>0)
+               {
+                venta[posicionVenta]=arreglo[op-1];
+                posicionVenta++;
+                total+=arreglo[op-1].getPrecio();
+                arreglo[op-1].setVendidos(arreglo[op-1].getVendidos()+1);
+                arreglo[op-1].setCantidad(arreglo[op-1].getCantidad()-1);
+
+               }else
+               {
+                   cout<<"\nExistencias agotadas\n";
+               }
+               
+                
+
+           }
+           else if(op==2)
+           {
+                 if (arreglo[op-1].getCantidad()>0)
+               {
+                venta[posicionVenta]=arreglo[op-1];
+                posicionVenta++;
+                total+=arreglo[op-1].getPrecio();
+                arreglo[op-1].setVendidos(arreglo[op-1].getVendidos()+1);
+                arreglo[op-1].setCantidad(arreglo[op-1].getCantidad()-1);
+
+               }else
+               {
+                   cout<<"\nExistencias agotadas\n";
+               }
+               
+           }
+           else if(op==3)
+           {
+                if (arreglo[op-1].getCantidad()>0)
+               {
+                venta[posicionVenta]=arreglo[op-1];
+                posicionVenta++;
+                total+=arreglo[op-1].getPrecio();
+                arreglo[op-1].setVendidos(arreglo[op-1].getVendidos()+1);
+                arreglo[op-1].setCantidad(arreglo[op-1].getCantidad()+1);
+
+               }else
+               {
+                   cout<<"\nExistencias agotadas\n";
+               }
+               
+           }    
+           else if(op>30 || op<1 || cin.fail())
+            {
+                 cout<<"\nOpcion no valida.\n Ingrese una opcion del 1-30!!\n";
+				cin.clear();   
+				cin.ignore(); 
+               continue;
+            } 
+        
+        cout<<"\n1.Imprimir recibo\n2.Hacer otra compra?(1. si // 2. no): ";
+        cin>>otro;
+        if (otro==1)
+        {
+             cout<<"\nSUBTOTAL: "<<total;
+             cout<<"\nProporcionenos su edad: ";cin>>edad;
+             if (edad>=60)
+             {
+             total=total*0.5;
+             }
+             cout<<"\nTotal: "<<total;
+            vTerminada=true;
+        }else if(otro>2 || otro<1 || cin.fail()){
+              cout<<"\nOpcion no valida.\n Ingrese una opcion del 1-2!!\n";
+				cin.clear();   
+				cin.ignore(); 
+               continue;
+        }
+    }
+    
+}
+void ventasXproducto()
+{
+     cout<<"\n************************************\n";
+    cout<<"\nINVENTARIO POR PRODUCTO\n";
+    int op;
+    bool salir=false;
+    while(!salir){
+        cout<<"\n1.bimbo\n2.Los andes \n3.hawit \n0.SALIR";
+        cout<<"\nIngrese producto que desea:\n";
+        cin>>op;
+        if (op==0)
+        {
+           salir=true;
+        }
+        
+        else if(op==1)
+           {
+               
+                 cout<<"\nNombre: "<<arreglo[op-1].getNombre()
+         <<"\nPrecio: "<<arreglo[op-1].getPrecio()
+         <<"\nCantidad: "<<arreglo[op-1].getCantidad() 
+         <<"\nVendidos: "<<arreglo[op-1].getVendidos()
+         <<"\nPrecio Total vendido: "<<arreglo[op-1].getPrecio()*arreglo[op-1].getVendidos()
+         <<endl;
+
+           }
+           else if(op==2)
+           {
+                 
+              cout<<"\nNombre: "<<arreglo[op-1].getNombre()
+         <<"\nPrecio: "<<arreglo[op-1].getPrecio()
+         <<"\nCantidad: "<<arreglo[op-1].getCantidad() 
+         <<"\nVendidos: "<<arreglo[op-1].getVendidos()
+         <<"\nPrecio Total vendido: "<<arreglo[op-1].getPrecio()*arreglo[op-1].getVendidos()
+         <<endl;
+
+               
+               
+           }
+           else if(op==3)
+           {
+               
+             cout<<"\nNombre: "<<arreglo[op-1].getNombre()
+         <<"\nPrecio: "<<arreglo[op-1].getPrecio()
+         <<"\nCantidad: "<<arreglo[op-1].getCantidad() 
+         <<"\nVendidos: "<<arreglo[op-1].getVendidos()
+         <<"\nPrecio Total vendido: "<<arreglo[op-1].getPrecio()*arreglo[op-1].getVendidos()
+         <<endl;
+               
+           }    
+           else if(op>30 || op<0 || cin.fail())
+            {
+                 cout<<"\nOpcion no valida.\n Ingrese una opcion del 0-30!!\n";
+				cin.clear();   
+				cin.ignore(); 
+               continue;
+            } 
+        
+        
+    }
+}
+void totalVentas(inventario * v)
+{
+    
+   
+   cout<<"\n************************************\n";
+    cout<<"\nVENTAS TOTALES\n";
+    for (int i = 0; i < posicionVenta; i++)
+    {
+         cout<<"\nNombre: "<<venta[i].getNombre()
+         <<"\nPrecio: "<<venta[i].getPrecio()
+         <<"\nCantidad: "<<venta[i].getCantidad()<<endl;
+    }
+
+
+}
