@@ -7,11 +7,19 @@ class inventario
 private:
     string nombre;
     string tipo;
+    string  * codigo;
     double precio;
     int cantidad;
     int vendidos;
 
 public:
+
+string * getCodigo() {
+	return this->codigo;
+}
+void setCodigo(string * codigo) {
+	this->codigo = codigo;
+}
     string getNombre() {
 	return this->nombre;
     }
@@ -42,7 +50,5 @@ public:
     void setVendidos(int vendidos) {
 	this->vendidos = vendidos;
     }
-
-
-    inventario();
+    inventario(){}
 };
